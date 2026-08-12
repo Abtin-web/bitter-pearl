@@ -47,7 +47,7 @@
 
 ```bash
 # کلون کردن ریپازیتوری
-git clone https://github.com/username/bitter-pearl.git
+git clone https://github.com/Abtin-web/bitter-pearl.git
 
 # ورود به پوشه‌ی پروژه
 cd bitter-pearl
