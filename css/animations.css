@@ -1,0 +1,560 @@
+/* ============================================
+   مروارید تلخ — Animations
+   Loading · Scroll · Hover · Keyframes
+   ============================================ */
+
+/* ============================================
+   Loading Page
+   ============================================ */
+.loading-page {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  z-index: var(--z-loading);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-page--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-page__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  animation: logoScaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.loading-page__logo img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.loading-page__brand {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  color: var(--color-text);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: letterReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.loading-page__tagline {
+  font-family: var(--font-accent);
+  font-size: var(--fs-base);
+  color: var(--color-accent);
+  letter-spacing: 8px;
+  text-indent: 8px;
+  opacity: 0;
+  animation: letterSpacingExpand 1s ease 0.5s forwards;
+}
+
+.loading-page__bar {
+  width: 200px;
+  height: 2px;
+  background: var(--color-dark);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-top: var(--space-sm);
+}
+
+.loading-page__bar-fill {
+  height: 100%;
+  width: 0;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+  animation: loadingBar 1.5s ease-in-out forwards;
+}
+
+/* ============================================
+   Keyframes — Loading
+   ============================================ */
+@keyframes logoScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes letterReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes letterSpacingExpand {
+  0% {
+    opacity: 0;
+    letter-spacing: 0;
+    text-indent: 0;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 8px;
+    text-indent: 8px;
+  }
+}
+
+@keyframes loadingBar {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   Scroll Animations (IntersectionObserver)
+   ============================================ */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation Variants */
+[data-animate="fade"] {
+  transform: none;
+}
+
+[data-animate="fade-up"] {
+  transform: translateY(40px);
+}
+
+[data-animate="fade-down"] {
+  transform: translateY(-40px);
+}
+
+[data-animate="fade-right"] {
+  transform: translateX(40px);
+}
+
+[data-animate="fade-left"] {
+  transform: translateX(-40px);
+}
+
+[data-animate="scale"] {
+  transform: scale(0.9);
+}
+
+[data-animate="scale"].is-visible {
+  transform: scale(1);
+}
+
+/* Stagger Delays */
+[data-delay="100"] {
+  transition-delay: 0.1s;
+}
+[data-delay="200"] {
+  transition-delay: 0.2s;
+}
+[data-delay="300"] {
+  transition-delay: 0.3s;
+}
+[data-delay="400"] {
+  transition-delay: 0.4s;
+}
+[data-delay="500"] {
+  transition-delay: 0.5s;
+}
+[data-delay="600"] {
+  transition-delay: 0.6s;
+}
+
+/* ============================================
+   Product Card Scroll-In (staggered)
+   Resolves the transition conflict between
+   [data-animate] and .product-card hover so
+   that box-shadow / border-color / transform
+   all transition correctly after scroll-in.
+   ============================================ */
+.product-card[data-animate]:nth-child(1) {
+  transition-delay: 0s;
+}
+.product-card[data-animate]:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.product-card[data-animate]:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.product-card[data-animate]:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.product-card[data-animate]:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.product-card[data-animate]:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+/* After scroll-in completes, switch back to the luxury
+   transition (covers all properties for hover effects)
+   without resetting transition-delay so stagger works. */
+.product-card[data-animate].is-visible {
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* No delay on hover so it feels responsive.
+   Also re-declare the hover transform here because
+   [data-animate].is-visible (same specificity, later
+   in source) would otherwise override .product-card:hover. */
+.product-card[data-animate].is-visible:hover {
+  transition-delay: 0s;
+  transform: translateY(-8px);
+}
+
+/* ============================================
+   Hero Animations
+   ============================================ */
+.hero__content > * {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero__content > *:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.hero__content > *:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.hero__content > *:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.hero__content > *:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.hero__content > *:nth-child(5) {
+  animation-delay: 1s;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Image Zoom */
+.hero__image img {
+  animation: heroZoom 20s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   Floating Animation
+   ============================================ */
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ============================================
+   Pulse Animation
+   ============================================ */
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ============================================
+   Shimmer (skeleton loading)
+   ============================================ */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-dark) 0%,
+    var(--color-card) 50%,
+    var(--color-dark) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ============================================
+   Spin
+   ============================================ */
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Bounce In
+   ============================================ */
+.bounce-in {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   Slide In
+   ============================================ */
+.slide-in-right {
+  animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   Toast Notification
+   ============================================ */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--color-dark);
+  color: var(--color-text);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 10px 30px var(--color-shadow-strong);
+  z-index: var(--z-modal);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.4s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--fs-sm);
+  max-width: 90vw;
+}
+
+.toast--show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast__icon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ============================================
+    Reduced Motion
+    ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-animate] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero__content > * {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero__image img {
+    animation: none;
+  }
+}
+
+/* ============================================
+    Mobile Performance Optimizations
+    Reduce animations on mobile for better
+    performance and battery life
+    ============================================ */
+@media (max-width: 768px) {
+  /* Reduce hero zoom animation duration */
+  .hero__image img {
+    animation-duration: 10s;
+  }
+
+  /* Reduce scroll animation distance */
+  [data-animate] {
+    transform: translateY(20px);
+  }
+
+  [data-animate="fade-up"] {
+    transform: translateY(20px);
+  }
+
+  [data-animate="fade-right"] {
+    transform: translateX(20px);
+  }
+
+  [data-animate="fade-left"] {
+    transform: translateX(-20px);
+  }
+
+  /* Reduce stagger delays on mobile */
+  [data-delay="100"] {
+    transition-delay: 0.05s;
+  }
+  [data-delay="200"] {
+    transition-delay: 0.1s;
+  }
+  [data-delay="300"] {
+    transition-delay: 0.15s;
+  }
+  [data-delay="400"] {
+    transition-delay: 0.2s;
+  }
+  [data-delay="500"] {
+    transition-delay: 0.25s;
+  }
+  [data-delay="600"] {
+    transition-delay: 0.3s;
+  }
+
+  /* Reduce product card stagger on mobile */
+  .product-card[data-animate]:nth-child(1) {
+    transition-delay: 0s;
+  }
+  .product-card[data-animate]:nth-child(2) {
+    transition-delay: 0.05s;
+  }
+  .product-card[data-animate]:nth-child(3) {
+    transition-delay: 0.1s;
+  }
+  .product-card[data-animate]:nth-child(4) {
+    transition-delay: 0.15s;
+  }
+  .product-card[data-animate]:nth-child(5) {
+    transition-delay: 0.2s;
+  }
+  .product-card[data-animate]:nth-child(6) {
+    transition-delay: 0.25s;
+  }
+
+  /* Disable floating and pulse animations on mobile */
+  .floating,
+  .pulse {
+    animation: none;
+  }
+
+  /* Reduce transition durations */
+  .product-card {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .testimonial {
+    transition: border-color 0.3s ease;
+  }
+
+  .value-card {
+    transition: border-color 0.3s ease;
+  }
+}

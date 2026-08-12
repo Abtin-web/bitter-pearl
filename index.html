@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1a0f0a" />
+  <meta name="description" content="مروارید تلخ — فروشگاه قهوه تخصصی. با ما همیشه با ارژی بمون" />
+  <title>مروارید تلخ | فروشگاه قهوه تخصصی</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/resonsive.css" />
+</head>
+<body>
+  <!-- ============================================
+       Loading Page
+       ============================================ -->
+  <div class="loading-page" id="loadingPage">
+    <div class="loading-page__logo">
+      <img src="images/logo.png" alt="مروارید تلخ" />
+      <div class="loading-page__brand" id="loadingBrand"></div>
+    </div>
+    <div class="loading-page__tagline">BITTER PEARL</div>
+    <div class="loading-page__bar">
+      <div class="loading-page__bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       Header
+       ============================================ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <!-- Logo -->
+      <a href="index.html" class="header__logo">
+        <img src="images/logo.png" alt="مروارید تلخ" />
+        <div class="header__logo-text">
+          <span>مروارید تلخ</span>
+          <span>BITTER PEARL</span>
+        </div>
+      </a>
+
+      <!-- Nav -->
+      <nav class="header__nav" id="headerNav">
+        <a href="index.html" class="header__nav-link active">خانه</a>
+        <a href="products.html" class="header__nav-link">محصولات</a>
+        <a href="about.html" class="header__nav-link">درباره ما</a>
+        <a href="contact.html" class="header__nav-link">تماس با ما</a>
+      </nav>
+
+      <!-- Cart + Toggle -->
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <a href="cart.html" class="header__cart" aria-label="سبد خرید">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="header__cart-badge hidden" id="cartBadge">0</span>
+        </a>
+        <button class="header__toggle" id="headerToggle" aria-label="منو">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================
+       Hero Section
+       ============================================ -->
+  <section class="hero" id="hero">
+    <div class="hero__image">
+      <img src="images/hero-coffee.jpg" alt="قهوه مروارید تلخ" />
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="hero__content container">
+      <p class="hero__welcome" data-animate="fade">به دنیای قهوه خوش آمدید</p>
+      <h1 class="hero__title">مروارید تلخ</h1>
+      <p class="hero__slogan">با ما همیشه با ارژی بمون</p>
+      <p class="hero__desc">
+        قهوه‌های تخصصی از بهترین دانه‌های جهان، با رست اختصاصی و طعمی
+        که هر لحظه شما را به یاد آرامش می‌اندازد.
+      </p>
+      <div class="hero__actions">
+        <a href="products.html" class="btn btn--primary">مشاهده محصولات</a>
+        <a href="about.html" class="btn btn--outline">داستان ما</a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>اسکرول کنید</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Brand Intro
+       ============================================ -->
+  <section class="section brand-intro" id="brandIntro">
+    <div class="container">
+      <div class="brand-intro__grid">
+        <div class="brand-intro__content" data-animate="fade-right">
+          <p class="brand-intro__label">داستان ما</p>
+          <h2 class="brand-intro__title">از دانه تا فنجان شما</h2>
+          <p class="brand-intro__text">
+            مروارید تلخ با عشق به قهوه شروع شد. ما باور داریم هر فنجان قهوه
+            یک داستان دارد — داستانی از سرزمین‌های دور، دست‌های زحمتکش
+            کشاورزان و هنر باریستا های ما. هدف ما این است که بهترین طعم
+            قهوه را به شما هدیه دهیم.
+          </p>
+          <p class="brand-intro__text">
+            هر دانه قهوه با دقت انتخاب می‌شود، با هنر درست می‌شود و با عشق
+            به دست شما می‌رسد. چون ما می‌دانیم که قهوه فقط یک نوشیدنی نیست،
+            یک تجربه است.
+          </p>
+          <a href="about.html" class="btn btn--outline btn--sm">بیشتر بدانید</a>
+        </div>
+        <div class="brand-intro__image" data-animate="fade-left">
+          <img src="images/about-bg.jpg" alt="داستان مروارید تلخ" />
+          <div class="brand-intro__badge">
+            <span class="brand-intro__badge-num">۱۰+</span>
+            <span class="brand-intro__badge-text">سال تجربه</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Best Sellers
+       ============================================ -->
+  <section class="section best-sellers" id="bestSellers">
+    <div class="container">
+      <div class="section__header" data-animate="fade-up">
+        <h2 class="section__title">پرفروش‌ترین‌ها</h2>
+        <p class="section__subtitle">محبوب‌ترین قهوه‌های ما</p>
+      </div>
+      <div class="grid grid--3" id="bestSellersGrid">
+        <!-- Products rendered by JS -->
+      </div>
+      <div class="best-sellers__more" data-animate="fade-up">
+        <a href="products.html" class="btn btn--outline">همه محصولات</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Testimonials
+       ============================================ -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section__header" data-animate="fade-up">
+        <h2 class="section__title">نظرات مشتریان</h2>
+        <p class="section__subtitle">آنچه مشتریان ما می‌گویند</p>
+      </div>
+      <div class="grid grid--3">
+        <!-- Testimonial 1 -->
+        <div class="testimonial" data-animate="fade-up" data-delay="100">
+          <div class="testimonial__quote">"</div>
+          <p class="testimonial__text">
+            بهترین قهوه‌ای که تا حالا چشیده‌م! طعم اسپرسوی مروارید تلخ
+            واقعاً منحصربه‌فرد است. هر صبح با یک فنجان از این قهوه روزم
+            رو شروع می‌کنم.
+          </p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">س</div>
+            <div>
+              <div class="testimonial__name">سارا محمدی</div>
+              <div class="testimonial__role">مشتری وفادار</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial" data-animate="fade-up" data-delay="200">
+          <div class="testimonial__quote">"</div>
+          <p class="testimonial__text">
+            کیفیت عالی، بسته‌بندی زیبا و ارسال سریع. کاپوچینوی مروارید
+            تلخ طعمی کلاسیک و در عین حال خاص داره. حتماً پیشنهاد می‌کنم.
+          </p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">ر</div>
+            <div>
+              <div class="testimonial__name">رضا احمدی</div>
+              <div class="testimonial__role">بارista</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial" data-animate="fade-up" data-delay="300">
+          <div class="testimonial__quote">"</div>
+          <p class="testimonial__text">
+            من عاشق لاته مروارید تلخ شدم! طعم ملایم و خامه‌ای اون واقعاً
+            فوق‌العاده‌ست. با این قهوه واقعاً همیشه با ارژی بمونم!
+          </p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">م</div>
+            <div>
+              <div class="testimonial__name">مریم حسینی</div>
+              <div class="testimonial__role">علاقه‌مند قهوه</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Footer
+       ============================================ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <!-- Brand -->
+      <div class="footer__col footer__col--brand">
+        <div class="footer__logo">
+          <img src="images/logo.png" alt="مروارید تلخ" />
+          <span class="footer__logo-text">مروارید تلخ</span>
+        </div>
+        <p class="footer__desc">
+          فروشگاه قهوه تخصصی مروارید تلخ. ما بهترین دانه‌های قهوه را با
+          روست اختصاصی به شما عرضه می‌کنیم. با ما همیشه با ارژی بمون.
+        </p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="اینستاگرام">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="تلگرام">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 4.5L2.5 12.5l6 2 2 6 4-4 5 4z"></path>
+            </svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="واتساپ">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer__col">
+        <h4 class="footer__col-title">دسترسی سریع</h4>
+        <div class="footer__links">
+          <a href="index.html" class="footer__link">خانه</a>
+          <a href="products.html" class="footer__link">محصولات</a>
+          <a href="about.html" class="footer__link">درباره ما</a>
+          <a href="contact.html" class="footer__link">تماس با ما</a>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="footer__col">
+        <h4 class="footer__col-title">محصولات</h4>
+        <div class="footer__links">
+          <a href="products.html" class="footer__link">اسپرسو</a>
+          <a href="products.html" class="footer__link">کاپوچینو</a>
+          <a href="products.html" class="footer__link">لاته</a>
+          <a href="products.html" class="footer__link">موکا</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer__col">
+        <h4 class="footer__col-title">ارتباط با ما</h4>
+        <div class="footer__links">
+          <a href="contact.html" class="footer__link">تهران، ایران</a>
+          <a href="tel:+982100000000" class="footer__link">۰۲۱-۰۰۰۰۰۰۰۰</a>
+          <a href="mailto:info@bitterpearl.ir" class="footer__link">info@bitterpearl.ir</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© ۱۴۰۵ <span>مروارید تلخ</span> — تمام حقوق محفوظ است.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       Scripts
+       ============================================ -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
